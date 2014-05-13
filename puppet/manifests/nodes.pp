@@ -6,10 +6,6 @@ node default {
     require => Exec['apt-get update'],
   }
 
-  package { $sys_packages:
-    ensure => "installed",
-    require => Exec['apt-get update'],
-  }
   class { "apache": }
 
   apache::module { 'rewrite': }

@@ -19,7 +19,7 @@ if [ ! -x $GIT ]; then
 fi
 
 if [ `gem query --local | grep librarian-puppet | wc -l` -eq 0 ]; then
-  gem install librarian-puppet
+  gem install librarian-puppet --no-rdoc --no-ri
   cd $PUPPET_DIR && librarian-puppet install --clean
 else
   cd $PUPPET_DIR && librarian-puppet update

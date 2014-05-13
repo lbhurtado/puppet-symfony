@@ -14,9 +14,10 @@ class basic::users{
 
 # just some packages
 class basic::packages{
-  package{"tmux": ensure => installed}
-  package{"curl": ensure => installed}
-  package{"vim":  ensure => installed}
+  package { $sys_packages:
+    ensure => "installed",
+    require => Exec['apt-get update'],
+  }
 }
 
 
