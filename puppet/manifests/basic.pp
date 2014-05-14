@@ -16,10 +16,8 @@ class basic::users{
 class basic::packages{
   package { $sys_packages:
     ensure => "installed",
-    require => Exec['apt-get update'],
   }
 }
-
 
 class basic::helpers{
   $puppet_dir = "/vagrant/puppet"

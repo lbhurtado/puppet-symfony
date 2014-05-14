@@ -3,7 +3,6 @@ node default {
 
   package { ['python-software-properties']:
     ensure  => 'installed',
-    require => Exec['apt-get update'],
   }
 
   class { "apache": }
@@ -19,10 +18,6 @@ node default {
     template                 => 'txtcmdr/apache/vhost.conf.erb',
   }
 
-  apt::ppa { 'ppa:ondrej/php5':
-    before  => Class['php'],
-  }
-
   class { 'php': }
 
   php::module { $php_modules: }
@@ -33,7 +28,6 @@ node default {
 
   class { 'mysql':
     root_password => 'root',
-    require       => Exec['apt-get update'],
   }
 
   mysql::grant { $mysql_db:
@@ -58,30 +52,4 @@ node default {
     template    => 'txtcmdr/apache/vhost.conf.erb',
   }
 
-  class { 'composer':
-    require => [ Class[ 'php' ], Package[ 'curl' ] ]
-  }
-
-  composer::install { 'default':
-    path    => '/vagrant',
-    require => Class[ 'composer' ]
-  }
-
-  class { 'symfony':
-    db_name  => $mysql_db,
-    db_user  => $mysql_user,
-    db_pass  => $mysql_pass,
-  }
-
-  /* optimize symfony AppKernel */
-  symfony::patch { 'vagrantee':}
-
-  stage { 'custom': }
-  Stage['main'] -> Stage['custom']
-
-  class { 'custom':
-    stage => custom
-  }
-
-  class { 'smstools': }
 }
