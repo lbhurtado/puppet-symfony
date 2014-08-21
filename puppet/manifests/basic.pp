@@ -16,6 +16,7 @@ class basic::users{
 class basic::packages{
   package { $sys_packages:
     ensure => "installed",
+    require => Class['basic::update_aptget']
   }
 }
 
