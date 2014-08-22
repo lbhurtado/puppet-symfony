@@ -18,6 +18,11 @@ node default {
     target_dir   => '/usr/local/bin',
     require => [Class['php'], Package['curl']]
   }
+
+  symfony::install { $app_root:
+    require => Class['composer'],
+  }
+
   class { 'apache':
     default_mods        => false,
     default_confd_files => false,
