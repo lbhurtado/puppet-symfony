@@ -19,7 +19,7 @@ node default {
     require => [Class['php'], Package['curl']]
   }
 
-  symfony::install { $app_root:
+  txtcmdr::symfony { $app_root:
     require => Class['composer'],
   }
 
