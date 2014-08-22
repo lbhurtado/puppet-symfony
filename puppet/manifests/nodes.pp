@@ -6,11 +6,18 @@ node default {
     value => ['date.timezone = "UTC"', 'upload_max_filesize = 8M', 'short_open_tag = 0']
   }
 
+/*
   class { 'composer':
     path    => $app_root,
     require => [Class['php'], Package['curl']]
   }
+*/
 
+  class { 'composer':
+    command_name => 'composer',
+    target_dir   => '/usr/local/bin',
+    require => [Class['php'], Package['curl']]
+  }
   class { 'apache':
     default_mods        => false,
     default_confd_files => false,
