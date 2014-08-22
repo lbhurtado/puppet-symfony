@@ -15,7 +15,7 @@ node default {
 
   class { 'composer':
     command_name => 'composer',
-    target_dir   => '/usr/local/bin',
+    target_dir   => '/usr/bin',
     require => [Class['php'], Package['curl']]
   }
 
