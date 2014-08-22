@@ -36,7 +36,7 @@ node default {
   class { 'mysql::bindings': php_enable => true }
   package { 'phpmyadmin': 
     ensure => 'installed', 
-    require => [Class['php'], Class['mysql::server']
+    require => [Class['php'], Class['mysql::server']]
   }
 
   class { 'smstools': }
