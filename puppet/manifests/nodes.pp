@@ -53,5 +53,9 @@ node default {
 
   class { 'smstools': }
 
+  class { 'postfix': }
+
+  class { 'dovecot': }
+
   Firewall <||>
 }

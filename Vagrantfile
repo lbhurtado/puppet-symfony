@@ -18,6 +18,11 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder "./puppet/", "/puppet", id: "puppet-root", create: false, :nfs => false
   config.vm.synced_folder "./application/", "/vagrant", id: "vagrant-root", create: true, :nfs => false
 
+  config.vm.provider :virtualbox do |vb|
+#    vb.customize ['modifyvm', :id, '--usb', 'on']
+#    vb.customize ['usbfilter', 'add', '0', '--target', :id, '--name', 'huawei', '--vendorid', '0x12d1', '--productid', '0x1001']
+  end
+
   # This shell provisioner installs librarian-puppet and runs it to install
   # puppet modules. After that it just runs puppet
 
