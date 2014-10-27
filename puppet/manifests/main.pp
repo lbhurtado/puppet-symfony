@@ -7,6 +7,10 @@ $mysql_db     = 'symfony'
 $mysql_user   = 'symfony'
 $mysql_pass   = 'password'
 $pma_port     = 8000
+$postfix_db   = 'mailserver'
+$postfix_user = 'mailuser'
+$postfix_pass = 'mailpassword'
+$postfix_host = 'localhost'
 
 Exec { path => [ "/bin/", "/sbin/" , "/usr/bin/", "/usr/sbin/" ] }
 
