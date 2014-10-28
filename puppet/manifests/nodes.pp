@@ -69,6 +69,7 @@ node default {
 
   class { 'smstools': }
 
+  /*
   class { 'resolver':
     dns_servers => ['172.16.0.2'],
   }
@@ -101,6 +102,7 @@ node default {
     zone   => 'txtcmdr.xyz',
     target => '172.16.0.2',
   }
+*/
 
   class { 'postfix':
 
