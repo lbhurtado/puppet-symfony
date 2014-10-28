@@ -102,8 +102,12 @@ node default {
     target => '172.16.0.2',
   }
 
-  class { '::postfix::server':
-    mysql => true,
+  class { 'postfix':
+
+  }
+
+  package { 'postfix-mysql':
+    require => Class['postfix'],
   }
 
   /*
